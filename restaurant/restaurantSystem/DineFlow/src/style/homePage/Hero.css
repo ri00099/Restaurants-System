@@ -1,0 +1,180 @@
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/bgImage.png");
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 3-layer child overlay */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(0.2rem);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 80vw;
+    color: #fff;
+    padding: 2rem;
+
+}
+
+.hero-content h1 {
+    font-size: 6rem;
+    /* 60px */
+    line-height: 7.5rem;
+    /* 75px */
+    font-weight: 800;
+    /* match your style */
+    font-family: "Archivo", sans-serif;
+}
+
+.hero-content p {
+    font-size: 2rem;
+    /* 20px */
+    line-height: 2.8rem;
+    /* 28px */
+    font-weight: 500;
+    font-family: "Archivo", sans-serif;
+    color: #ffffff;
+    max-width: 67.2rem;
+    /* 672px */
+    margin: 2rem auto;
+    /* centers it */
+    text-align: center;
+}
+.hero-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.btn-outline,
+.btn-filled {
+    padding: 1.4rem 3rem;
+    font-size: 1.6rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    border: none;
+}
+
+/* Buttons */
+.btn-outline {
+    background: #fff;
+    color: #000;
+}
+
+.btn-filled {
+    background: #6366f1;
+    color: #fff;
+}
+.btn-primar {
+    padding: 1.4rem 3rem;
+    font-size: 1.6rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-ligh {
+    transition: all 0.3s ease;
+}
+.btn-ligh:hover {
+    /* background: #4f46e5; */
+    transform: translateY(-2px);
+}
+
+.btn-primar {
+    background: #6366f1;
+    color: #fff;
+}
+.btn-primar:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+/* Hover */
+.btn-outline:hover {
+    opacity: 0.9;
+}
+
+.btn-filled:hover {
+    background: #4f46e5;
+    opacity: 0.9;
+
+}
+
+/* ✅ Tablet */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.6rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 4rem;
+        line-height: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content p {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        max-width: 90%;
+    }
+}
+
+/* ✅ Mobile */
+@media (max-width: 480px) {
+    .hero-content {
+        max-width: 90vw;
+    }
+
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-buttons button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content p {
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        max-width: 95%;
+    }
+}

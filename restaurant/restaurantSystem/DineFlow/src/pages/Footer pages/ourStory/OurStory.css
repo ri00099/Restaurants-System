@@ -1,0 +1,289 @@
+.story-page {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  color: #1f1f1f;
+}
+
+/* -------------------------------------- */
+/* HERO SECTION */
+/* -------------------------------------- */
+
+.story-hero {
+  position: relative;
+  height: 62vh;          /* reduced from full screen */
+  min-height: 32rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.story-hero-bg {
+  position: absolute;
+  inset: 0;
+
+   background-image: url("https://images.unsplash.com/photo-1728051103953-91ce6f60610a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+  background-repeat: no-repeat;
+  transform: scale(1.1);
+  /* prevents blur edges */
+  z-index: 1;
+}
+
+.story-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.story-hero-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 0 1.5rem;
+  color: #ffffff;
+}
+
+.story-title {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.story-subtitle {
+  font-size: 1.05rem;
+  max-width: 38rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+.story-title {
+   font-size: 3.25rem;
+    font-weight: 600;
+}
+
+.story-subtitle {
+
+      margin-top: 1rem;
+    font-size: 1.7rem;
+    opacity: 0.92;
+
+}
+
+/* Overlay for readability */
+.story-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* Keep text above overlay */
+.story-title,
+.story-subtitle {
+  position: relative;
+  z-index: 2;
+}
+
+.story-title {
+  font-weight: 700;
+  /* bold */
+}
+
+/* Our Story hero title */
+.story-hero .story-title {
+  font-size: 4.2rem;
+  line-height: 1.2;
+}
+
+/* Our Story hero subtitle */
+.story-hero .story-subtitle {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+
+
+/* STORY SECTIONS */
+
+.story-section {
+  padding: 80px 20px;
+  margin: 0;
+  background-color: #f7f8fc;
+}
+
+.gray-bg {
+  background: #fafafa;
+}
+
+.story-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.story-container.reverse {
+  flex-direction: row-reverse;
+}
+
+.story-hero .story-title,
+.story-hero .story-subtitle {
+  color: #fff;
+}
+
+/* TEXT BLOCK */
+.story-text {
+  flex: 1;
+}
+
+
+.story-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  text-align: center;
+
+}
+
+.story-text p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 16px;
+  font-weight: 400;
+  text-align: center;
+
+}
+
+.story-text p:last-child {
+  color: #555;
+}
+
+/* IMAGE + VIDEO BLOCK */
+.story-image,
+.story-image video,
+.story-image img {
+  width: 100%;
+  max-width: 420px;
+  height: 480px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.1);
+}
+
+.story-image {
+  flex-shrink: 0;
+}
+
+/* -------------------------------------- */
+/* CTA */
+/* -------------------------------------- */
+.story-cta {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: #f7f8fc;
+
+  margin-top: 0;
+}
+
+.story-cta h2 {
+  font-size: 2.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.story-cta p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.cta-btn {
+  padding: 0.9rem 2.2rem;
+  font-size: 1.75rem;
+  background: #6366f1;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cta-btn:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* -------------------------------------- */
+/* RESPONSIVE */
+/* -------------------------------------- */
+@media (max-width: 900px) {
+  .story-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .story-container.reverse {
+    flex-direction: column;
+  }
+
+  .story-text h2 {
+    font-size: 2.3rem;
+  }
+
+  .story-image,
+  .story-image img,
+  .story-image video {
+    height: 360px;
+    max-width: 100%;
+  }
+
+  .story-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .story-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .story-hero {
+    padding: 3rem 1rem;
+  }
+
+  .story-title {
+    font-size: 2.2rem;
+  }
+
+  .story-subtitle {
+    font-size: 1rem;
+  }
+
+  .story-text h2 {
+    font-size: 2rem;
+  }
+
+  .story-text p {
+    font-size: 1.1rem;
+  }
+
+  .cta-btn {
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+  }
+}

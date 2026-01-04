@@ -1,0 +1,262 @@
+/* Root sizing */
+:root {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+}
+
+/* -------------------- HERO SECTION -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: gilroy;
+
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(0.2rem);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 80vw;
+    color: #fff;
+    
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 6rem;
+    line-height: 7.5rem;
+    font-weight: 800;
+    font-family: "Archivo", sans-serif;
+    margin-bottom: 2rem;
+}
+
+.hero-content p {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    font-weight: 500;
+    font-family: "Archivo", sans-serif;
+    color: #ffffff;
+    max-width: 67.2rem;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-light,
+.btn-primary {
+    padding: 1.4rem 3rem;
+    font-size: 1.6rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-light {
+    background: #fff;
+    color: #000;
+}
+
+.btn-primary {
+    background: #6366f1;
+    color: #fff;
+}
+
+.btn-light:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+
+/* -------------------- ABOUT SECTION -------------------- */
+
+
+/* -------------------- SPECIALS SECTION -------------------- */
+
+
+/* -------------------- TESTIMONIAL SECTION -------------------- */
+.feedback-section {
+    width: 100%;
+    padding: 8rem 2rem;
+    background: #000;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.feedback-heading {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    color: #111;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feedback-card {
+    padding: 3rem 2.5rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 1.2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+    text-align: left;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-text {
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    color: #444;
+}
+
+.feedback-user-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: auto;
+}
+
+.feedback-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e0e7ff;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #6366f1;
+    font-size: 1.6rem;
+}
+
+.feedback-avatar.fallback {
+    background: #e0e7ff;
+}
+
+.feedback-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem 0;
+    color: #222;
+}
+
+.feedback-role {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #888;
+}
+
+/* -------------------- RESPONSIVE DESIGN -------------------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 4rem;
+        line-height: 5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        max-width: 90%;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .btn-light,
+    .btn-primary {
+        width: 100%;
+    }
+
+    .about-section h2,
+    .specials-section h2,
+    .feedback-heading {
+        font-size: 3rem;
+    }
+
+    .specials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .hero-content {
+        max-width: 95vw;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .hero-content p {
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        max-width: 95%;
+    }
+
+    .about-section h2,
+    .specials-section h2,
+    .feedback-heading {
+        font-size: 2.4rem;
+    }
+
+    .about-section,
+    .specials-section,
+    .feedback-section {
+        padding: 5rem 1.5rem;
+    }
+
+    .specials-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .feedback-grid {
+        grid-template-columns: 1fr;
+    }
+}

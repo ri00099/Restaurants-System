@@ -1,0 +1,289 @@
+/* =========================
+   ROOT & RESET
+========================= */
+:root {
+  font-size: 62.5%;
+  --brand: #4b5dff;
+  --brand-dark: #3646e8;
+
+  --bg-page: #f7f8fc;
+  --bg-card: #ffffff;
+
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --muted: #6b7280;
+
+  --border: #e5e7eb;
+  --container-width: 120rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+    .story-hero {
+  position: relative;
+  padding: 7rem 2rem 6rem;
+  text-align: center;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* Background layer */
+.story-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1728051103953-91ce6f60610a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: blur(5px) ;
+  transform: scale(1.15) !important; /* prevents blur edges */
+  z-index: 1 !important;
+}
+
+/* Dark overlay for readability */
+.story-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+/* Text content */
+.story-hero > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Title */
+.story-title {
+  font-size: clamp(3rem, 4vw, 4.2rem);
+  font-weight: 700;
+  max-width: 90rem;
+  margin: 0 auto;
+  line-height: 1.2;
+  color:  #fff !important;
+}
+
+/* Subtitle */
+.story-subtitle {
+    color:  #f9f9f9 !important;
+  margin-top: 1.4rem;
+  font-size: 1.7rem;
+  max-width: 80rem;
+  margin-inline: auto;
+  line-height: 1.7;
+  opacity: 1;
+}
+/* =========================
+   PAGE WRAPPER
+========================= */
+.wraper-wrap {
+  background: var(--bg-page);
+}
+
+.content-wrap {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 5rem 2.4rem;
+}
+
+/* =========================
+   TWO COLUMN LAYOUT
+========================= */
+.content-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 38rem;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.content-main h2 {
+  font-size: 2.6rem;
+  margin: 2.8rem 0 1rem;
+  font-weight: 700;
+}
+
+.content-main p {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.6rem;
+}
+
+.content-main ul {
+  margin-left: 2rem;
+  margin-bottom: 1.8rem;
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
+.content-main li {
+  margin-bottom: 0.6rem;
+}
+
+/* =========================
+   ASIDE BOOKING CARD
+========================= */
+.content-aside .aside-card {
+  background: var(--bg-card);
+  border-radius: 1.2rem;
+  padding: 2.8rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
+  position: sticky;
+  top: 3rem;
+}
+
+.aside-card h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.aside-sub {
+  font-size: 1.4rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* =========================
+   FORM STYLES
+========================= */
+.booking-form label {
+  display: block;
+  margin-bottom: 1.6rem;
+}
+
+.booking-form .label-text {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.booking-form input,
+.booking-form textarea {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  font-size: 1.5rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(75, 93, 255, 0.15);
+}
+
+.booking-form textarea {
+  resize: vertical;
+  min-height: 10rem;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+.submit-btn {
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 1.3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+  background: var(--brand-dark);
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+.page-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 5rem 0;
+}
+
+/* =========================
+   MORE INFO
+========================= */
+.more-info h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.more-info p {
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  max-width: 80rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .content-columns {
+    grid-template-columns: minmax(0, 1fr) 34rem;
+    gap: 3.6rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .content-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .content-aside .aside-card {
+    position: relative;
+    top: 0;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-hero {
+    padding: 5rem 1.6rem;
+  }
+
+  .content-wrap {
+    padding: 3.2rem 1.6rem;
+  }
+}

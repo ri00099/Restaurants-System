@@ -1,0 +1,67 @@
+/* Entire section */
+.cf-wrapper {
+  width: 100%;
+    background-color: #f7f8fc;
+
+  padding: 0px 0;
+  overflow: hidden;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
+/* Heading */
+.cf-title {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  margin-bottom: 4rem;
+  color: #111;
+  text-align: center;
+}
+
+/* Slider container */
+.cf-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Track */
+.cf-track {
+  display: flex;
+  gap: 18px;
+  animation: cf-scroll 28s linear infinite;
+  padding: 10px 0;
+}
+
+/* Testimonial card */
+.cf-card {
+  min-width: 260px;
+  max-width: 260px;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cf-text {
+  color: #444;
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.cf-author {
+  font-weight: 600;
+  font-size: 13px;
+  color: #222;
+}
+
+/* Smooth auto-scroll */
+@keyframes cf-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

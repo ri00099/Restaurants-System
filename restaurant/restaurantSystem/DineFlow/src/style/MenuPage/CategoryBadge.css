@@ -1,0 +1,32 @@
+.category-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-main-courses {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-appetizers {
+  background: #e9d5ff;
+  color: #7e22ce;
+}
+
+.badge-desserts {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.badge-beverages {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-default {
+  background: #f3f4f6;
+  color: #374151;
+}

@@ -1,0 +1,129 @@
+.notification-toast {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px 20px;
+  min-width: 350px;
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10000;
+  animation: slideIn 0.3s ease-out;
+  border-left: 4px solid #6366f1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification-toast.cooking,
+.notification-toast.preparing {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+}
+
+.notification-toast.ready {
+  border-left-color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+}
+
+.notification-toast.completed {
+  border-left-color: #6366f1;
+  background: linear-gradient(135deg, #ede9fe 0%, #ffffff 100%);
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.notification-icon {
+  flex-shrink: 0;
+}
+
+.notification-icon.cooking {
+  color: #f59e0b;
+}
+
+.notification-icon.ready {
+  color: #10b981;
+}
+
+.notification-icon.completed {
+  color: #6366f1;
+}
+
+.notification-icon.pending {
+  color: #6b7280;
+}
+
+.notification-message h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.notification-time {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.notification-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* Container for multiple notifications */
+.notifications-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.notifications-container > * {
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .notification-toast {
+    min-width: 300px;
+    max-width: calc(100vw - 40px);
+    right: 20px;
+    left: 20px;
+    margin: 0 auto;
+  }
+}

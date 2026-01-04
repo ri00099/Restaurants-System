@@ -1,0 +1,132 @@
+/* OVERLAY */
+.qv-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* MODAL */
+.qv-modal {
+  width: 92%;
+  max-width: 960px;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.4);
+  animation: scaleIn 0.25s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* IMAGE */
+.qv-image {
+  position: relative;
+}
+
+.qv-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CLOSE */
+.qv-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.qv-content {
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.qv-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.qv-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.qv-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.qv-desc {
+  margin: 14px 0;
+  color: #6b7280;
+}
+
+.qv-stats {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.qv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.qv-tags span {
+  padding: 6px 14px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.qv-add {
+  font-size: 1.57rem;
+  margin-top: auto;
+  padding: 7px 16px;
+  border-radius: 14px;
+  border: none;
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.flexy {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 5px;
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .qv-modal {
+    grid-template-columns: 1fr;
+  }
+
+  .qv-image {
+    height: 220px;
+  }
+}

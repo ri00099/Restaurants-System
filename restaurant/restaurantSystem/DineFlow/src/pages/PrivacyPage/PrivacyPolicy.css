@@ -1,0 +1,210 @@
+:root {
+    font-size: 62.5%;
+    --pri-blue: #4b5dff;
+    --pri-dark: #1b1f3b;
+    --text-dark: #1e1e1e;
+    --text-light: #555;
+    --bg-light: #f7f8fc;
+    --card-bg: #ffffff;
+}
+
+/* OUTER WRAPPER */
+.privacy-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bg-light);
+    font-family: "Inter", sans-serif;
+    padding-bottom: 5rem;
+}
+
+/* HERO HEADER (same style as FAQ page) */
+.privacy-hero {
+    width: 100%;
+    padding: 2rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    color: #000000;
+}
+
+.privacy-hero h1 {
+    font-size: 4.2rem;
+    font-weight: 600;
+}
+
+.privacy-hero p {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    opacity: 0.92;
+}
+
+.privacy-updated {
+    display: inline-block;
+    margin-top: 1.6rem;
+    font-size: 1.4rem;
+    opacity: 0.85;
+}
+
+/* HERO SECTION */
+.privacy-hero {
+    position: relative;
+    min-height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.privacy-hero {
+    position: relative;
+    height: 65vh;
+    min-height: 32rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.privacy-hero-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("https://images.unsplash.com/photo-1728051103953-91ce6f60610a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+    transform: scale(1.1);
+    /* avoids blur edges */
+    z-index: 1;
+}
+
+.privacy-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.privacy-hero-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 0 1.5rem;
+    color: #ffffff;
+}
+
+.privacy-hero-content h1 {
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.privacy-hero-content p {
+    font-size: 1.8rem;
+    max-width: 40rem;
+    line-height: 1.7;
+    opacity: 0.95;
+    margin-bottom: 0.6rem;
+}
+
+.privacy-updated {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+
+/* Dark overlay for readability */
+.privacy-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+/* Keep text above overlay */
+.privacy-hero h1,
+.privacy-hero p,
+.privacy-hero .privacy-updated {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+/* Safety */
+.privacy-hero {
+    overflow: hidden;
+}
+
+/* CONTENT SECTION */
+.privacy-content {
+    width: 90%;
+    max-width: 900px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+/* CONTENT BLOCKS */
+.privacy-block {
+    background: var(--card-bg);
+    padding: 2.4rem 2.6rem;
+    border-radius: 1.4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    transition: 0.25s ease;
+}
+
+.privacy-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* SECTION TITLES */
+.privacy-block h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--pri-dark);
+}
+
+/* TEXT */
+.privacy-block p {
+    margin-top: 0.8rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: var(--text-light);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .privacy-block {
+        padding: 2rem;
+    }
+
+    .privacy-block h2 {
+        font-size: 2rem;
+    }
+
+    .privacy-block p {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .privacy-hero {
+        height: 55vh;
+    }
+
+    .privacy-hero-content h1 {
+        font-size: 2.1rem;
+    }
+}
