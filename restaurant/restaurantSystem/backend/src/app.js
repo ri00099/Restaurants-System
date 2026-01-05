@@ -6,6 +6,7 @@ const app = express();
 
 // CORS configuration - allow development and production origins
 const allowedOrigins = [
+  "https://restaurants-system.vercel.app/",
   "http://localhost:5173",
   "http://localhost:5174",
   "http://localhost:5175",
