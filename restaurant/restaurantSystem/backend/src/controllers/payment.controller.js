@@ -1,7 +1,9 @@
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
-const Payment = require("../models/payment.model");
+const { sendPaymentSuccessEmail } = require("../utils/email.service.js");
+const Payment = require("../models/payment.model.js");
 const dotenv = require("dotenv");
+const User = require("../models/user.model.js");
 dotenv.config();
 
 if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
@@ -63,10 +65,6 @@ exports.verifyPayment = async (req, res) => {
       razorpay_signature,
     } = req.body;
 
-    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-      return res.status(400).json({ success: false, message: "Missing payment data" });
-    }
-
     const body = `${razorpay_order_id}|${razorpay_payment_id}`;
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
@@ -74,22 +72,34 @@ exports.verifyPayment = async (req, res) => {
       .digest("hex");
 
     if (expectedSignature !== razorpay_signature) {
-      return res.status(400).json({ success: false, message: "Invalid signature" });
+      return res.status(400).json({ success: false });
     }
 
-    await Payment.findOneAndUpdate(
+    const payment = await Payment.findOneAndUpdate(
       { orderId: razorpay_order_id },
       {
         paymentId: razorpay_payment_id,
         signature: razorpay_signature,
         status: "completed",
-      }
+      },
+      { new: true }
     );
 
-    res.json({ success: true });
+    // 🔥 ONLY EMAIL LOGIC (no schema change)
+    if (payment?.userId) {
+      const user = await User.findById(payment.userId);
+      if (user?.email) {
+        await sendPaymentSuccessEmail({
+          email: user.email,
+          amount: payment.amount,
+          paymentId: razorpay_payment_id,
+          orderId: razorpay_order_id,
+        });
+      }
+    }
 
-  } catch (error) {
-    console.error("Verify Payment Error:", error);
-    res.status(500).json({ success: false, message: "Verification failed" });
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false });
   }
 };

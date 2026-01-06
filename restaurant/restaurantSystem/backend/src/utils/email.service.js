@@ -1,5 +1,7 @@
 const nodemailer = require("nodemailer");
+const axios = require("axios");
 
+const BREVO_URL = "https://api.brevo.com/v3/smtp/email";
 // Create transporter
 const createTransporter = () => {
   return nodemailer.createTransport({
@@ -14,22 +16,45 @@ const createTransporter = () => {
 // Send OTP Email
 const sendEmailOTP = async (email, otp) => {
   try {
-    const transporter = createTransporter();
+    await axios.post(
+      BREVO_URL,
+      {
+        sender: {
+          email: process.env.BREVO_SENDER_EMAIL,
+          name: process.env.BREVO_SENDER_NAME || "Graphura",
+        },
+        to: [{ email }],
+        subject: "🔐 Your OTP for Registration",
+        htmlContent: `
+          <div style="font-family:Arial,sans-serif">
+            <h2>OTP Verification</h2>
+            <p>Your One-Time Password is:</p>
+            <h1 style="letter-spacing:5px">${otp}</h1>
+            <p>This OTP is valid for <b>5 minutes</b>.</p>
+          </div>
+        `,
+      },
+      {
+        headers: {
+          "api-key": process.env.BREVO_API_KEY,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    const mailOptions = {
-      from: `"Restaurant App" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: "Your Login OTP",
-      text: `Your OTP for login is: ${otp}. It is valid for 5 minutes.`,
-    };
-
-    await transporter.sendMail(mailOptions);
-    console.log(`OTP Email sent to ${email}`);
+    console.log(`✅ OTP sent via Brevo to ${email}`);
     return true;
   } catch (error) {
-    console.error("Email send failed:", error);
+    console.error(
+      "❌ Brevo OTP Error:",
+      error.response?.data || error.message
+    );
     return false;
   }
+};
+
+module.exports = {
+  sendEmailOTP,
 };
 
 // Send Contact/Feedback Email to Restaurant
@@ -1041,6 +1066,61 @@ const sendOrderCompletionFeedback = async (userEmail, userName, orderData) => {
   }
 };
 
+
+
+const sendEmail = async ({ to, subject, html }) => {
+  try {
+    await axios.post(
+      BREVO_URL,
+      {
+        sender: {
+          email: process.env.BREVO_SENDER_EMAIL,
+          name: process.env.BREVO_SENDER_NAME || "Graphura",
+        },
+        to: [{ email: to }],
+        subject,
+        htmlContent: html,
+      },
+      {
+        headers: {
+          "api-key": process.env.BREVO_API_KEY,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return true;
+  } catch (error) {
+    console.error("Brevo Mail Error:", error.response?.data || error.message);
+    return false;
+  }
+};
+
+/* ================= PAYMENT SUCCESS EMAIL ================= */
+const sendPaymentSuccessEmail = async ({ email, amount, paymentId, orderId }) => {
+  return sendEmail({
+    to: email,
+    subject: "✅ Payment Successful - Graphura",
+    html: `
+      <h2>🎉 Payment Successful</h2>
+      <p>Your payment has been completed successfully.</p>
+
+      <table style="margin-top:15px">
+        <tr><td><strong>Amount:</strong></td><td>₹${amount}</td></tr>
+        <tr><td><strong>Order ID:</strong></td><td>${orderId}</td></tr>
+        <tr><td><strong>Payment ID:</strong></td><td>${paymentId}</td></tr>
+      </table>
+
+      <p style="margin-top:20px">
+        Thank you for choosing <b>Graphura</b> 🍽️
+      </p>
+    `,
+  });
+};
+
+
+
+
 module.exports = {
   sendEmailOTP,
   sendContactEmail,
@@ -1050,5 +1130,7 @@ module.exports = {
   sendOnlineOrderInquiry,
   sendReservationCompletionEmail,
   sendReservationConfirmedByAdmin,
-  sendOrderCompletionFeedback
+  sendOrderCompletionFeedback,
+  sendPaymentSuccessEmail
 };
+
