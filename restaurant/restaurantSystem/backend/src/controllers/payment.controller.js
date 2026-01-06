@@ -1,6 +1,8 @@
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const Payment = require("../models/payment.model");
+const dotenv = require("dotenv");
+dotenv.config();
 
 if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
   throw new Error("❌ Razorpay keys are missing in environment variables");
